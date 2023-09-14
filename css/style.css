@@ -124,7 +124,7 @@ header {
     font-family: 'Tilt Prism', cursive;
     font-size: 50px;
     color: var(--clr-dark);
-    top: em;
+    margin-left: 2%;
 }
 
 
@@ -141,7 +141,7 @@ header {
     border: none;
     cursor: pointer;
     position: fixed;
-    right: 1em;
+    right: 1.2em;
     top: 2.2em;
     z-index: 999;
 }
@@ -457,4 +457,26 @@ header {
     .footer__link {
         font-size: 40px;
     }
+}
+
+/* Для узких экранов */
+
+@media (max-width: 340px) {
+
+    .section {
+        padding: 1em;
+    }
+
+    .portfolio {
+        grid-template-columns: auto;
+    }
+
+    .footer__link {
+        font-size: 15px;
+    }
+
+    .social-list__link {
+        font-size: 30px;
+    }
+    
 }
