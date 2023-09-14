@@ -472,11 +472,12 @@ header {
     }
 
     .footer__link {
-        font-size: 15px;
+        font-size: 10px;
     }
 
     .social-list__link {
         font-size: 30px;
+        margin: 10px;
     }
     
 }
