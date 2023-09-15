@@ -447,6 +447,10 @@ header {
     text-decoration: underline;
 }
 
+.footer a:hover {
+    text-decoration: none;
+}
+
 @media (min-width:1200px) {
 
     .social-list__link {
