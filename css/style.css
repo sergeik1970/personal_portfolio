@@ -320,7 +320,7 @@ header {
                       url(../img/IMG_1.jpg);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -425,6 +425,7 @@ header {
         justify-content: center;
         text-align: center;
         background-position: 70% center;
+        background-attachment: scroll;
     }
 
     .intro__content {
@@ -954,5 +955,23 @@ header {
         font-size: 24px;
         width: 40px;
         height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio__item:hover .portfolio__img {
+        transform: none;
+    }
+
+    .nav {
+        backdrop-filter: none;
+    }
+
+    .service:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
     }
 }
