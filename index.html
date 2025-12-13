@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sergey Kudashev</title>
+    <title>Сергей Кудашев - Front-end разработчик</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -38,7 +38,7 @@
 
     <header>
         <div class="logo">
-            kdsv.ru
+            KDSV
         </div>
         <button class="nav-toggle" aria-label="toggle navigation">
             <span class="hamburger"></span>
@@ -46,11 +46,11 @@
 
         <nav class="nav">
             <ul class="nav__list">
-                <li class="nav-item"><a href="#home" class="nav__link">Home</a></li>
-                <li class="nav-item"><a href="#services" class="nav__link">My Services</a></li>
-                <li class="nav-item"><a href="#about" class="nav__link">About Me</a></li>
-                <li class="nav-item"><a href="#work" class="nav__link">My Work</a></li>
-                <li class="nav-item"><a href="#footer" class="nav__link">Contacts</a></li>
+                <li class="nav-item"><a href="#home" class="nav__link">Главная</a></li>
+                <li class="nav-item"><a href="#services" class="nav__link">Услуги</a></li>
+                <li class="nav-item"><a href="#about" class="nav__link">Обо мне</a></li>
+                <li class="nav-item"><a href="#work" class="nav__link">Работы</a></li>
+                <li class="nav-item"><a href="#footer" class="nav__link">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -58,88 +58,96 @@
     <!-- Intro -->
 
     <section class="intro" id="home">
-        <h1 class="section__title section__title--intro">
-            Hi, I am <strong>Sergey Kudashev</strong>
-        </h1>
-        <p class="section__subtitle section__subtitle--intro">front-end dev</p>
-        <img src="img/dev-03.JPG" alt="a picture of Sergey Kudashev" class="intro__img">
+        <div class="intro__content">
+            <p class="intro__greeting">Привет, я</p>
+            <h1 class="intro__title">Сергей Кудашев</h1>
+            <p class="intro__subtitle">Front-end разработчик</p>
+        </div>
     </section>
 
     <!-- My services -->
 
     <section class="my-services" id="services">
-        <h2 class="section__title section__title--services">What I do</h2>
+        <h2 class="section__title section__title--services">Что я делаю</h2>
 
         <div class="services">
             <!-- service-1 -->
             <div class="service">
-                <h3>Design</h3>
-                <p>Web design of websites and applications plays a key role in creating an attractive and functional
-                    user interface. It combines aesthetics and usability to ensure maximum user satisfaction.
-                    Good web design for sites and applications takes into account not only visual aspects such as colors
-                    and composition, but also ergonomics and navigation so that users can easily interact with the
-                    interface and achieve their goals.
-                </p>
+                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11.5" cy="17.5" r="5.5"/><path d="M3.5 3.5h17a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-17a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2z"/></svg>
+                <h3>Дизайн</h3>
+                <p>Создаю красивые и интуитивно понятные интерфейсы с фокусом на удобство пользователей.</p>
             </div>
             <!-- service-2 -->
             <div class="service">
-                <h3>Development</h3>
-                <p>Web development involves the process of creating and building websites and applications that are
-                    functional, interactive, and visually appealing. It encompasses various aspects such as front-end
-                    development, back-end development, and database management, all working together to deliver a
-                    seamless user experience. The
-                    continuous advancements in web technologies make web development a dynamic field that requires
-                    constant learning and adaptation to stay ahead in the ever-evolving digital landscape.</p>
+                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <h3>Разработка</h3>
+                <p>Разрабатываю быстрые, адаптивные и функциональные веб-приложения с использованием современных технологий.</p>
             </div>
             <!-- service-3 -->
             <div class="service">
-                <h3>Support</h3>
-                <p>Web supporting refers to the ongoing maintenance, updates, and troubleshooting required to keep
-                    websites and web applications running smoothly. It involves tasks such as monitoring server
-                    performance, resolving technical issues, ensuring security measures are up to date, and providing
-                    user support. It is a critical aspect
-                    of maintaining the functionality, security, and overall success of websites and web applications.
-                </p>
+                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 1 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <h3>Поддержка</h3>
+                <p>Поддерживаю и развиваю проекты, обеспечивая стабильную работу и дальнейшее улучшение.</p>
             </div>
         </div>
 
-        <a href="#work" class="btn">My Works</a>
+        <a href="#work" class="btn">Мои работы</a>
     </section>
 
     <!-- About Me -->
 
     <section class="about-me" id="about">
-        <h2 class="section__title section__title--about">Who I am</h2>
-        <p class="section__subtitle section__subtitle--about">Web-developer</p>
+        <div class="about-me__container">
+            <div class="about-me__content">
+                <h2 class="section__title section__title--about">Кто я</h2>
+                <p class="section__subtitle section__subtitle--about">Front-end разработчик</p>
 
-        <div class="about-me__body">
-            <p>A web developer is a skilled professional who specializes in creating and building websites and web
-                applications. Web developers play a vital role in the digital landscape, continuously adapting to new
-                technologies and industry trends to create innovative and effective web solutions.</p>
+                <div class="about-me__body">
+                    <p>Я занимаюсь разработкой современных веб-приложений с упором на удобство, адаптивность и визуальное качество. Превращаю дизайн-макеты в чистый, понятный и функциональный код, создавая интерактивные интерфейсы.</p>
 
-            <p>Front-end development focuses on the visual and interactive aspects of websites and web applications.
-                Front-end developers create the user interface and implement functionalities that users directly
-                interact with. They are responsible for designing and developing the layout, navigation, and overall
-                user experience. Front-end developers collaborate with designers to translate visual designs into code,
-                ensuring responsiveness and cross-browser compatibility. Their expertise lies in creating intuitive and
-                engaging interfaces that deliver a seamless user experience across different devices and platforms.</p>
+                    <p>Работаю с современными технологиями и слежу за трендами в индустрии, чтобы создавать надёжные и качественные решения.</p>
+                </div>
+            </div>
 
-            <p></p>
-
+            <img src="img/IMG_4.JPG" class="about-me__img" alt="a picture of Sergey Kudashev">
         </div>
+    </section>
 
-        <img src="img/dev-02.jpeg" class="about-me__img" alt="a picture of Sergey Kudashev">
+    <!-- Hobbies -->
 
+    <section class="hobbies" id="hobbies">
+        <h2 class="section__title section__title--hobbies">Мои увлечения</h2>
+        
+        <div class="hobbies__container">
+            <div class="hobbies__gallery">
+                <div class="hobbies__item">
+                    <img src="img/IMG_2.jpeg" alt="Путешествия" class="hobbies__img">
+                    <h3 class="hobbies__label">Путешествия</h3>
+                </div>
+                <div class="hobbies__item">
+                    <img src="img/IMG_5.JPG" alt="Спортивное ориентирование" class="hobbies__img">
+                    <h3 class="hobbies__label">Спортивное ориентирование</h3>
+                </div>
+                <div class="hobbies__item">
+                    <img src="img/IMG_3.JPG" alt="Велоспорт" class="hobbies__img">
+                    <h3 class="hobbies__label">Велоспорт</h3>
+                </div>
+            </div>
+            <div class="hobbies__controls">
+                <button class="hobbies__btn hobbies__btn--prev" aria-label="Предыдущая">↑</button>
+                <button class="hobbies__btn hobbies__btn--next" aria-label="Следующая">↓</button>
+            </div>
+        </div>
     </section>
 
     <section class="my-work" id="work">
-        <h2 class="section__title section__title--work">My Work</h2>
-        <p class="section__subtitle section__subtitle--work">A selection of my recent work</p>
+        <h2 class="section__title section__title--work">Мои работы</h2>
+        <p class="section__subtitle section__subtitle--work">Лучшие проекты, над которыми я работал</p>
 
         <div class="portfolio">
             <!-- Portfolio 01 -->
-            <a href="https://sergeik1970.github.io/Chess-on-running/" class="portfolio__item">
-                <img src="img/Chessrun.jpg" alt="" class="portfolio__img">
+            <a href="https://chessrun.ru/" class="portfolio__item">
+                <img src="img/Chessrun-2.jpg" alt="" class="portfolio__img">
             </a>
             <!-- Portfolio 02 -->
             <a href="https://sergeik1970.github.io/CactusShop/" class="portfolio__item">
@@ -162,32 +170,52 @@
             </a>
 
             <!-- Portfolio 06 -->
-            <a href="https://sergeik1970.github.io/dice-game/" class="portfolio__item">
-                <img src="img/Dice-game.jpg" alt="" class="portfolio__img">
+            <a href="https://sergeik1970.github.io/Couples/?" class="portfolio__item">
+                <img src="img/Pairs.jpg" alt="" class="portfolio__img">
             </a>
         </div>
     </section>
 
     <section class="footer" id="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">KDSV</h3>
+                    <p class="footer__description">Front-end разработчик. Интерфейсы, код и пользовательский опыт.</p>
+                </div>
 
-        <a href="mailto:sergey.m.kudashev@gmail.com" class="footer__link">&copy; Sergey Kudashev, 2025</a>
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Быстрые ссылки</h4>
+                    <ul class="footer__nav">
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#work">Работы</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                    </ul>
+                </div>
 
-        <ul class="social-list">
-            <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/sergeik1970"><i
-                        class="fa-brands fa-github"></i></a>
-            </li>
-            <li class="social-list__item">
-                <a class="social-list__link" href="https://codepen.io/"><i class="fa-brands fa-codepen"></i></a>
-            </li>
-            <li class="social-list__item">
-                <a class="social-list__link" href="https://t.me/sergey_kdsv"><i class="fa-brands fa-telegram"></i></a>
-            </li>
-            <li class="social-list__item">
-                <a class="social-list__link" href="https://discordapp.com/users/695582238104092752"><i
-                        class="fa-brands fa-discord"></i></a>
-            </li>
-        </ul>
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Контакты</h4>
+                    <a href="mailto:sergey.m.kudashev@gmail.com" class="footer__contact-link">sergey.m.kudashev@gmail.com</a>
+                    <ul class="social-list">
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://github.com/sergeik1970" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </li>
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://t.me/sergey_kdsv" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        </li>
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://discordapp.com/users/695582238104092752" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2025 Сергей Кудашев. Все права защищены.</p>
+            </div>
+        </div>
     </section>
 
     <script src="js/script.js"></script>
