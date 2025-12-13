@@ -317,7 +317,7 @@ header {
 
 .intro {
     background-image: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(26, 26, 26, 0.4) 100%), 
-                      url(../img/IMG_1.JPG);
+                      url(../img/IMG_1.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
