@@ -11,6 +11,23 @@ navLinks.forEach(link => {
     });
 });
 
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.removeAttribute("data-src");
+            observer.unobserve(img);
+        }
+    });
+}, {
+    rootMargin: "9999px"
+});
+
+document.querySelectorAll("img[data-src]").forEach(img => {
+    imageObserver.observe(img);
+});
+
 class HobbiesGallery {
     constructor() {
         this.gallery = document.querySelector(".hobbies__gallery");
