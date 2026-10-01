@@ -940,19 +940,6 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
-/* Some case screenshots are wider than this frame's ~4:3 box and lose their
-   header/edges to cover-cropping. Contain + a fill colour letterboxes them
-   cleanly instead. `--light` swaps the frame's default dark fill (fine for
-   dark-UI screenshots) for the site's paper tone, for screenshots with a
-   white/light background. */
-.showcase__frame--contain .showcase__img {
-    object-fit: contain;
-}
-
-.showcase__frame--contain.showcase__frame--light {
-    background: var(--clr-paper);
-}
-
 .showcase__index {
     display: flex;
     align-items: baseline;
@@ -1066,8 +1053,13 @@ h1, h2, h3, h4 {
     }
 
     .showcase__stage.is-pinned .showcase__frame {
-        aspect-ratio: auto;
-        height: 68vh;
+        /* Was height: 68vh (capped 560px) independent of the column's own
+           width — at typical desktop widths that rendered as ~617x560,
+           effectively square rather than a deliberate rectangle. Driving
+           the box from width via aspect-ratio instead keeps it landscape
+           at any viewport height. */
+        aspect-ratio: 3 / 2;
+        height: auto;
         max-height: 560px;
     }
 }
