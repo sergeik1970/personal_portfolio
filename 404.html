@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена — KDSV</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/img/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="icon" href="/img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .not-found {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .not-found__inner {
+            max-width: 720px;
+        }
+
+        .not-found__code {
+            font-family: var(--ff-display);
+            font-size: clamp(5rem, 22vw, 12rem);
+            font-weight: var(--fw-bold);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin: 0.2em 0 0.25em;
+        }
+
+        .not-found__text {
+            color: var(--clr-paper-on-black-faint);
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            line-height: 1.6;
+            margin: 0 0 2em;
+        }
+
+        .not-found__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <a href="/" class="logo" aria-label="KDSV — главная">
+            <img src="/img/kdsv-mark.svg" class="logo__mark" alt="" width="49" height="90">
+            <span class="logo__word">KDSV</span>
+        </a>
+    </header>
+
+    <main class="section section--dark not-found">
+        <div class="not-found__inner">
+            <p class="eyebrow eyebrow--on-dark">Ошибка 404</p>
+            <h1 class="not-found__code">404</h1>
+            <p class="not-found__text">Такой страницы нет — возможно, ссылка устарела или в адресе опечатка. Начните с главной или посмотрите наши кейсы.</p>
+            <div class="not-found__links">
+                <a href="/" class="btn btn--primary">На главную</a>
+                <a href="/#cases" class="btn btn--ghost-dark">Смотреть кейсы</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

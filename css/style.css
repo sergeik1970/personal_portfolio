@@ -300,6 +300,10 @@ h1, h2, h3, h4 {
     .site-header--on-dark {
         backdrop-filter: none;
     }
+    /* Without the blur, any translucency lets scrolled text read through
+       and collide with the logo, so the fill goes fully opaque here. */
+    .site-header--solid { background-color: var(--clr-paper); }
+    .site-header--on-dark { background-color: var(--clr-black); }
 }
 
 .site-header--on-dark::before {
@@ -799,7 +803,7 @@ h1, h2, h3, h4 {
 
 .process {
     max-width: var(--container);
-    margin: 0 auto;
+    margin: clamp(3.5em, 7vw, 5.5em) auto 0;
 }
 
 .process__grid {
@@ -937,6 +941,17 @@ h1, h2, h3, h4 {
     object-fit: cover;
 }
 
+/* For screenshots wider than the frame: show the whole screen instead of
+   cover-cropping its edges, and letterbox with the screenshot's own
+   background colour (set per frame via --frame-fill) so the bars vanish. */
+.showcase__frame--contain {
+    background: var(--frame-fill, var(--clr-ink));
+}
+
+.showcase__frame--contain .showcase__img {
+    object-fit: contain;
+}
+
 .showcase__index {
     display: flex;
     align-items: baseline;
@@ -1030,8 +1045,15 @@ h1, h2, h3, h4 {
         position: relative;
         height: 100vh;
         min-height: 620px;
-        overflow: hidden;
         gap: 0;
+    }
+
+    /* The pinned stage is ~100vh with the case centred inside it, so it
+       already carries its own breathing room below the last case; the
+       section's bottom padding on top of that left a ~half-screen gap
+       before the contact block. */
+    .section:has(.showcase__stage.is-pinned) {
+        padding-bottom: 0;
     }
 
     .showcase__stage.is-pinned .showcase__case {
@@ -1200,6 +1222,12 @@ h1, h2, h3, h4 {
     border: 1px solid var(--clr-hairline-on-black);
     text-decoration: none;
     transition: all 250ms ease;
+}
+
+.social-list__link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
 }
 
 .social-list__link:hover,
@@ -1450,6 +1478,71 @@ h1, h2, h3, h4 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.85rem;
+}
+
+/* Next-case teaser between the gallery and the dark CTA */
+.case-next {
+    background: var(--clr-paper);
+    padding: 0 var(--gutter);
+}
+
+.case-next__link {
+    position: relative;
+    display: grid;
+    gap: 0.6em;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: clamp(3.5em, 8vw, 5.5em) 4.5rem clamp(3.5em, 8vw, 5.5em) 0;
+    color: var(--clr-ink);
+    text-decoration: none;
+}
+
+.case-next__name {
+    font-family: var(--ff-display);
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    font-weight: var(--fw-bold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    transition: color 250ms ease;
+}
+
+.case-next__desc {
+    max-width: 52ch;
+    color: var(--clr-ink-soft);
+    line-height: 1.6;
+}
+
+.case-next__arrow {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: -1.75rem;
+    border: 1px solid var(--clr-hairline-strong);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    transition: transform 250ms var(--ease-out), background-color 250ms ease, border-color 250ms ease, color 250ms ease;
+}
+
+.case-next__link:hover .case-next__name,
+.case-next__link:focus-visible .case-next__name {
+    color: var(--clr-blue-ink);
+}
+
+.case-next__link:hover .case-next__arrow,
+.case-next__link:focus-visible .case-next__arrow {
+    background: var(--clr-blue);
+    border-color: var(--clr-blue);
+    color: #fff;
+    transform: translateX(6px);
+}
+
+@media (max-width: 560px) {
+    .case-next__link { padding-right: 0; }
+    .case-next__arrow { position: static; margin-top: 0.6em; }
 }
 
 /* ==========================================================================
