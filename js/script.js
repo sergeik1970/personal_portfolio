@@ -320,25 +320,6 @@
         });
     });
 
-    /* ---- Magnetic buttons (pointer devices only) ---- */
-    var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (canHover) {
-        document.querySelectorAll(".btn-magnetic").forEach(function (btn) {
-            var strength = 0.35;
-
-            btn.addEventListener("mousemove", function (e) {
-                var rect = btn.getBoundingClientRect();
-                var x = (e.clientX - rect.left - rect.width / 2) * strength;
-                var y = (e.clientY - rect.top - rect.height / 2) * strength;
-                gsap.to(btn, { x: x, y: y, duration: 0.4, ease: "power3.out" });
-            });
-
-            btn.addEventListener("mouseleave", function () {
-                gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1, 0.4)" });
-            });
-        });
-    }
-
     /* ---- Pinned case showcase (desktop only, progressive enhancement) ---- */
     var stage = document.querySelector("[data-showcase]");
     if (stage) {

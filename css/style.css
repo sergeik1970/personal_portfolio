@@ -176,8 +176,6 @@ h1, h2, h3, h4 {
    ========================================================================== */
 
 .btn {
-    --btn-x: 0px;
-    --btn-y: 0px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -192,9 +190,7 @@ h1, h2, h3, h4 {
     text-decoration: none;
     border: 1px solid transparent;
     cursor: pointer;
-    transform: translate(var(--btn-x), var(--btn-y));
-    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-    will-change: transform;
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .btn--primary {
@@ -206,6 +202,7 @@ h1, h2, h3, h4 {
 .btn--primary:hover,
 .btn--primary:focus-visible {
     box-shadow: 0 16px 36px rgba(var(--clr-blue-rgb), 0.4);
+    transform: translateY(-2px);
 }
 
 .btn--ghost-dark {
