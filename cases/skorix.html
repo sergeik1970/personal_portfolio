@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add("js");</script>
+    <title>Skorix — кейс KDSV</title>
+    <meta name="description" content="Skorix — платформа для педагогов: создание тестов, выдача заданий и просмотр результатов в одном пространстве. Кейс студии KDSV.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="KDSV">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="Skorix — кейс KDSV">
+    <meta property="og:description" content="Платформа для педагогов: создание тестов, выдача заданий и просмотр результатов в одном пространстве.">
+    <meta property="og:url" content="https://kdsv.ru/cases/skorix.html">
+    <meta property="og:image" content="https://kdsv.ru/img/cases/skorix/skorix-actual-test.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Skorix — кейс KDSV">
+    <meta name="twitter:description" content="Платформа для педагогов: создание тестов, выдача заданий и просмотр результатов в одном пространстве.">
+    <meta name="twitter:image" content="https://kdsv.ru/img/cases/skorix/skorix-actual-test.webp">
+    <link rel="icon" href="../img/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="icon" href="../img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(100841851, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/100841851" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+
+<body>
+
+    <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+    <script>
+        (function () {
+            try {
+                if (sessionStorage.getItem("kdsv-nav") === "1") {
+                    var t = document.getElementById("pageTransition");
+                    t.style.opacity = "1";
+                    t.style.pointerEvents = "auto";
+                    sessionStorage.removeItem("kdsv-nav");
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+
+    <header class="site-header">
+        <a href="../index.html#home" class="logo" aria-label="KDSV — главная">
+            <img src="../img/kdsv-mark.svg" class="logo__mark" alt="" width="49" height="90">
+            <span class="logo__word">KDSV</span>
+        </a>
+        <nav class="nav" aria-label="Основная навигация">
+            <ul class="nav__list">
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">01</span><a href="../index.html#home" class="nav__link">Главная</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">02</span><a href="../index.html#services" class="nav__link">Услуги</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">03</span><a href="../index.html#cases" class="nav__link">Кейсы</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">04</span><a href="../index.html#contact" class="nav__link">Контакты</a></li>
+                </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+            <span class="hamburger"></span>
+        </button>
+    </header>
+
+    <main>
+
+        <section class="case-hero">
+            <div class="case-hero__inner">
+                <p class="eyebrow eyebrow--on-dark case-hero__index"><span class="index-num">01</span><span class="index-num">/03</span></p>
+                <h1 class="case-hero__title"><span class="line"><span class="word">Skorix</span></span></h1>
+                <p class="case-hero__description">Skorix объединяет подготовку тестов, выдачу заданий и просмотр результатов в одном пространстве — для педагогов, учащихся и образовательных организаций.</p>
+                <ul class="case-hero__tags" aria-label="Роль и стек">
+                    <li class="showcase__tag">Веб-платформа</li>
+                    <li class="showcase__tag">Роли и доступ</li>
+                    <li class="showcase__tag">ИИ</li>
+                </ul>
+            </div>
+            <div class="case-hero__visual">
+                <img data-src="../img/cases/skorix/skorix-actual-test.webp" alt="Экран создания теста в Skorix" decoding="async">
+                <noscript><img src="../img/cases/skorix/skorix-actual-test.webp" alt="Экран создания теста в Skorix"></noscript>
+            </div>
+        </section>
+
+        <section class="case-content">
+            <div class="case-content__inner">
+                <div class="case-block" data-reveal>
+                    <span class="case-block__num index-num">01</span>
+                    <div>
+                        <h2>Что это за проект</h2>
+                        <p>Skorix — инструмент для педагогов, который объединяет подготовку тестов, выдачу заданий и просмотр результатов. Он предназначен для учителей школ, преподавателей колледжей и вузов, репетиторов и преподавателей курсов.</p>
+                        <p>Учащиеся работают со своей частью платформы: получают задания, проходят тесты и знакомятся с доступными результатами. Для образовательных организаций предусмотрены сценарии работы с учреждениями, классами, группами и участниками.</p>
+                    </div>
+                </div>
+
+                <div class="case-block" data-reveal>
+                    <span class="case-block__num index-num">02</span>
+                    <div>
+                        <h2>Какую задачу решает</h2>
+                        <p>Подготовка и проведение тестирования обычно состоит из нескольких отдельных действий: составить вопросы, оформить материал, передать учащимся, собрать ответы и разобраться в результатах.</p>
+                        <p>Skorix объединяет эти действия в одном продукте. При этом педагог сохраняет контроль над содержанием заданий и правилами работы с результатами.</p>
+                    </div>
+                </div>
+
+                <div class="case-block" data-reveal>
+                    <span class="case-block__num index-num">03</span>
+                    <div>
+                        <h2>Что реализовано</h2>
+                        <ul>
+                            <li>Создание тестов — вручную, из готового материала или с помощью ИИ.</li>
+                            <li>Редактирование вопросов, вариантов ответов и параметров теста перед публикацией.</li>
+                            <li>Выдача заданий ученикам, студентам, классам и группам.</li>
+                            <li>Отдельный пользовательский путь прохождения теста для учащегося.</li>
+                            <li>Просмотр результатов, ошибок и статистики.</li>
+                            <li>Роли пользователей и работа с образовательными организациями.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="case-block" data-reveal>
+                    <span class="case-block__num index-num">04</span>
+                    <div>
+                        <h2>В чём сложность разработки</h2>
+                        <p>Основная сложность — согласовать поведение разных частей продукта. Созданный педагогом тест должен корректно отображаться учащемуся, ответы — сохраняться, а результат — рассчитываться по заданным правилам.</p>
+                        <p>ИИ здесь — часть рабочего процесса: сгенерированный материал остаётся редактируемым, понятным и доступным для проверки педагогом. Отдельная задача — разграничение доступа, чтобы пользователи с разными ролями не получали чужие данные или административные возможности.</p>
+                    </div>
+                </div>
+
+                <div class="case-block" data-reveal>
+                    <span class="case-block__num index-num">05</span>
+                    <div>
+                        <h2>Что кейс говорит о KDSV</h2>
+                        <ul>
+                            <li>Проектирование сложных пользовательских сценариев с несколькими ролями.</li>
+                            <li>Разработка клиентской и серверной частей.</li>
+                            <li>Интеграция ИИ в прикладной продукт.</li>
+                            <li>Работа со структурированными данными и статистикой.</li>
+                            <li>Развитие большой системы со взаимосвязанными функциями.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-gallery">
+            <div class="case-gallery__inner">
+                <div class="case-gallery__head" data-reveal>
+                    <p class="eyebrow eyebrow--on-light">Материалы</p>
+                    <h2 class="section__title section__title--sm">Экраны Skorix</h2>
+                </div>
+                <div class="case-gallery__grid">
+                    <figure data-reveal>
+                        <div class="case-gallery__media">
+                            <img data-src="../img/cases/skorix/skorix-actual-test.webp" alt="Экран создания теста в Skorix" decoding="async">
+                            <noscript><img src="../img/cases/skorix/skorix-actual-test.webp" alt="Экран создания теста в Skorix"></noscript>
+                        </div>
+                        <figcaption>Экран создания теста · сохранённый снимок, без персональных данных</figcaption>
+                    </figure>
+                    <figure data-reveal>
+                        <div class="case-gallery__media">
+                            <img data-src="../img/cases/skorix/screen-create-methods.webp" alt="Три способа создать тест в Skorix" decoding="async">
+                            <noscript><img src="../img/cases/skorix/screen-create-methods.webp" alt="Три способа создать тест в Skorix"></noscript>
+                        </div>
+                        <figcaption>Создать самостоятельно, из файла или с ИИ · экран Skorix, пример данных</figcaption>
+                    </figure>
+                    <figure data-reveal>
+                        <div class="case-gallery__media">
+                            <img data-src="../img/cases/skorix/screen-ai-wizard.webp" alt="ИИ готовит черновик теста по предмету и теме" decoding="async">
+                            <noscript><img src="../img/cases/skorix/screen-ai-wizard.webp" alt="ИИ готовит черновик теста по предмету и теме"></noscript>
+                        </div>
+                        <figcaption>ИИ готовит черновик по предмету и теме · экран Skorix, пример данных</figcaption>
+                    </figure>
+                    <figure data-reveal>
+                        <div class="case-gallery__media">
+                            <img data-src="../img/cases/skorix/screen-class-stats.webp" alt="Статистика по классам в Skorix" decoding="async">
+                            <noscript><img src="../img/cases/skorix/screen-class-stats.webp" alt="Статистика по классам в Skorix"></noscript>
+                        </div>
+                        <figcaption>Статистика по классам без ручной сводки · экран Skorix, пример данных</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--dark case-cta">
+            <div class="case-cta__inner">
+                <h2>Обсудим похожий проект?</h2>
+                <div class="case-cta__links">
+                    <a href="https://t.me/sergey_kdsv" class="btn btn--primary btn-magnetic">Написать в Telegram</a>
+                    <a href="../index.html#cases" class="btn btn--ghost-dark">Все кейсы</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">KDSV</h3>
+                    <p class="footer__description">Команда дизайна и разработки. Сайты, сервисы и системы для бизнеса.</p>
+                </div>
+
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Быстрые ссылки</h4>
+                    <ul class="footer__nav">
+                        <li><a href="../index.html#home">Главная</a></li>
+                        <li><a href="../index.html#services">Услуги</a></li>
+                        <li><a href="../index.html#cases">Кейсы</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__section">
+                    <h4 class="footer__subtitle">Контакты</h4>
+                    <a href="mailto:sergey.m.kudashev@gmail.com" class="footer__contact-link">sergey.m.kudashev@gmail.com</a>
+                    <ul class="social-list">
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://t.me/sergey_kdsv" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        </li>
+                        <li class="social-list__item">
+                            <a class="social-list__link" href="https://vk.ru/kudashevsergey" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copy">&copy; 2026 KDSV. Все права защищены.</p>
+                <p class="footer__mark">kdsv.ru</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="../js/script.js"></script>
+
+</body>
+
+</html>

@@ -4,11 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сергей Кудашев - Front-end разработчик</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <script>document.documentElement.classList.add("js");</script>
+    <title>KDSV — сайты, сервисы и системы для бизнеса</title>
+    <meta name="description" content="KDSV — команда дизайна и разработки. Проектируем и разрабатываем сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="KDSV">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:title" content="KDSV — сайты, сервисы и системы для бизнеса">
+    <meta property="og:description" content="Команда дизайна и разработки. Проектируем и разрабатываем сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.">
+    <meta property="og:url" content="https://kdsv.ru/">
+    <meta property="og:image" content="https://kdsv.ru/img/IMG_1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KDSV — сайты, сервисы и системы для бизнеса">
+    <meta name="twitter:description" content="Команда дизайна и разработки. Проектируем и разрабатываем сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.">
+    <meta name="twitter:image" content="https://kdsv.ru/img/IMG_1.jpg">
+    <link rel="icon" href="img/favicon.svg?v=2" type="image/svg+xml">
+    <link rel="icon" href="img/favicon-32.png?v=2" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- Yandex.Metrika counter -->
@@ -36,152 +52,241 @@
 
 <body>
 
-    <header>
-        <div class="logo">
-            KDSV
-        </div>
-        <button class="nav-toggle" aria-label="toggle navigation">
+    <div class="page-transition" id="pageTransition" aria-hidden="true"></div>
+    <script>
+        (function () {
+            try {
+                if (sessionStorage.getItem("kdsv-nav") === "1") {
+                    var t = document.getElementById("pageTransition");
+                    t.style.opacity = "1";
+                    t.style.pointerEvents = "auto";
+                    sessionStorage.removeItem("kdsv-nav");
+                }
+            } catch (e) { /* ignore */ }
+        })();
+    </script>
+
+    <header class="site-header">
+        <a href="#home" class="logo" aria-label="KDSV — главная">
+            <img src="img/kdsv-mark.svg" class="logo__mark" alt="" width="49" height="90">
+            <span class="logo__word">KDSV</span>
+        </a>
+        <nav class="nav" aria-label="Основная навигация">
+            <ul class="nav__list">
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">01</span><a href="#home" class="nav__link">Главная</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">02</span><a href="#services" class="nav__link">Услуги</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">03</span><a href="#cases" class="nav__link">Кейсы</a></li>
+                    <li class="nav-item"><span class="index-num" aria-hidden="true">04</span><a href="#contact" class="nav__link">Контакты</a></li>
+                </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
             <span class="hamburger"></span>
         </button>
-
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav-item"><a href="#home" class="nav__link">Главная</a></li>
-                <li class="nav-item"><a href="#services" class="nav__link">Услуги</a></li>
-                <li class="nav-item"><a href="#about" class="nav__link">Обо мне</a></li>
-                <li class="nav-item"><a href="#work" class="nav__link">Работы</a></li>
-                <li class="nav-item"><a href="#footer" class="nav__link">Контакты</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Intro -->
+    <main>
 
-    <section class="intro" id="home">
-        <div class="intro__content">
-            <p class="intro__greeting">Привет, я</p>
-            <h1 class="intro__title">Сергей Кудашев</h1>
-            <p class="intro__subtitle">Front-end разработчик</p>
-        </div>
-    </section>
-
-    <!-- My services -->
-
-    <section class="my-services" id="services">
-        <h2 class="section__title section__title--services">Что я делаю</h2>
-
-        <div class="services">
-            <!-- service-1 -->
-            <div class="service">
-                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11.5" cy="17.5" r="5.5"/><path d="M3.5 3.5h17a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-17a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2z"/></svg>
-                <h3>Дизайн</h3>
-                <p>Создаю красивые и интуитивно понятные интерфейсы с фокусом на удобство пользователей.</p>
+        <!-- Hero -->
+        <section class="hero" id="home">
+            <div class="hero__bg">
+                <img src="img/IMG_1.jpg" class="hero__bg-img" alt="" decoding="async" fetchpriority="high">
             </div>
-            <!-- service-2 -->
-            <div class="service">
-                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                <h3>Разработка</h3>
-                <p>Разрабатываю быстрые, адаптивные и функциональные веб-приложения с использованием современных технологий.</p>
+            <div class="hero__scrim"></div>
+            <div class="hero__grain" aria-hidden="true"></div>
+
+            <div class="hero__content">
+                <p class="eyebrow eyebrow--on-dark hero__eyebrow">Команда дизайна и разработки</p>
+                <h1 class="hero__title">
+                    <span class="line"><span class="word">От</span> <span class="word">задумки</span></span>
+                    <span class="line"><span class="word">до</span> <span class="word">запуска</span></span>
+                </h1>
+                <p class="hero__subtitle">KDSV — сайты, сервисы и системы для бизнеса</p>
+                <p class="hero__tagline">Помогаем пройти путь от идеи и проектирования до запуска и дальнейшего развития — сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.</p>
+                <div class="hero__actions" aria-label="Основные действия">
+                    <a href="https://t.me/sergey_kdsv" class="btn btn--primary btn-magnetic">Обсудить проект</a>
+                    <a href="#cases" class="btn btn--ghost-dark">Смотреть кейсы</a>
+                </div>
             </div>
-            <!-- service-3 -->
-            <div class="service">
-                <svg class="service__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 1 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                <h3>Поддержка</h3>
-                <p>Поддерживаю и развиваю проекты, обеспечивая стабильную работу и дальнейшее улучшение.</p>
+        </section>
+
+        <!-- Services -->
+        <section class="section section--paper" id="services">
+            <div class="container">
+                <div class="section__head">
+                    <p class="eyebrow eyebrow--on-light">Что нужно вашему проекту?</p>
+                    <h2 class="section__title">Можно прийти с готовой задачей — или с идеей, которую ещё нужно сформулировать</h2>
+                </div>
+
+                <div class="services-list" data-reveal>
+                    <div class="service-row">
+                        <span class="service-row__num index-num">01</span>
+                        <svg class="service-row__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6-9 6-9-6z"/><path d="M3 9v6l9 6 9-6V9"/></svg>
+                        <div class="service-row__body">
+                            <h3 class="service-row__title">Рассказать и продать</h3>
+                            <p class="service-row__text">Сайты компаний и продуктов, лендинги и промо-сайты, интернет-магазины и каталоги.</p>
+                        </div>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-row__num index-num">02</span>
+                        <svg class="service-row__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        <div class="service-row__body">
+                            <h3 class="service-row__title">Создать новый сервис</h3>
+                            <p class="service-row__text">Веб-приложения, сервисы и платформы, личные кабинеты и полезные инструменты.</p>
+                        </div>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-row__num index-num">03</span>
+                        <svg class="service-row__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <div class="service-row__body">
+                            <h3 class="service-row__title">Упростить работу</h3>
+                            <p class="service-row__text">Внутренние системы, интеграции и автоматизация процессов бизнеса.</p>
+                        </div>
+                    </div>
+                    <div class="service-row">
+                        <span class="service-row__num index-num">04</span>
+                        <svg class="service-row__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 1 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <div class="service-row__body">
+                            <h3 class="service-row__title">Улучшить существующее</h3>
+                            <p class="service-row__text">Дизайн интерфейсов, развитие функциональности и поддержка после запуска.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="process" data-reveal>
+                    <p class="eyebrow eyebrow--on-light">Как движемся к результату</p>
+                    <div class="process__grid">
+                        <div class="process__step">
+                            <span class="process__num index-num" data-count="1">01</span>
+                            <h3>Разобраться</h3>
+                            <p>Обсуждаем задачу, аудиторию и ограничения.</p>
+                        </div>
+                        <div class="process__step">
+                            <span class="process__num index-num" data-count="2">02</span>
+                            <h3>Спроектировать</h3>
+                            <p>Собираем структуру и будущий интерфейс.</p>
+                        </div>
+                        <div class="process__step">
+                            <span class="process__num index-num" data-count="3">03</span>
+                            <h3>Собрать</h3>
+                            <p>Разрабатываем и проверяем сценарии.</p>
+                        </div>
+                        <div class="process__step">
+                            <span class="process__num index-num" data-count="4">04</span>
+                            <h3>Запустить</h3>
+                            <p>Помогаем начать работу и развивать продукт.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <a href="#work" class="btn">Мои работы</a>
-    </section>
+        <!-- Founder -->
+        <aside class="section section--sand" id="founder">
+            <div class="founder" data-reveal>
+                <div class="founder__photo-wrap">
+                    <img data-src="img/IMG_4.jpg" class="founder__img" alt="Сергей Кудашев, основатель KDSV" decoding="async">
+                    <noscript><img src="img/IMG_4.jpg" class="founder__img" alt="Сергей Кудашев, основатель KDSV"></noscript>
+                </div>
+                <div class="founder__content">
+                    <p class="eyebrow eyebrow--on-light founder__eyebrow">Основатель KDSV</p>
+                    <p class="founder__name">Сергей Кудашев</p>
+                    <p class="founder__bio">Вместе с командой соединяем дизайн и разработку, чтобы путь от идеи до работающего продукта был понятным — на каждом проекте, независимо от масштаба задачи.</p>
+                </div>
+            </div>
+        </aside>
 
-    <!-- About Me -->
-
-    <section class="about-me" id="about">
-        <div class="about-me__container">
-            <div class="about-me__content">
-                <h2 class="section__title section__title--about">Кто я</h2>
-                <p class="section__subtitle section__subtitle--about">Front-end разработчик</p>
-
-                <div class="about-me__body">
-                    <p>Я занимаюсь разработкой современных веб-приложений с упором на удобство, адаптивность и визуальное качество. Превращаю дизайн-макеты в чистый, понятный и функциональный код, создавая интерактивные интерфейсы.</p>
-
-                    <p>Работаю с современными технологиями и слежу за трендами в индустрии, чтобы создавать надёжные и качественные решения.</p>
+        <!-- Cases -->
+        <section class="section section--paper" id="cases">
+            <div class="container">
+                <div class="section__head" data-reveal>
+                    <p class="eyebrow eyebrow--on-light">Наши кейсы</p>
+                    <h2 class="section__title">Реальные проекты: платформы, сервисы и сайты</h2>
                 </div>
             </div>
 
-            <img data-src="img/IMG_4.jpg" class="about-me__img" alt="a picture of Sergey Kudashev" decoding="async">
-        </div>
-    </section>
+            <div class="showcase__stage" data-showcase>
 
-    <!-- Hobbies -->
+                <div class="showcase__case">
+                    <div class="showcase__frame">
+                        <img data-src="img/cases/skorix/skorix-actual-test.webp" alt="Экран платформы Skorix: создание теста" class="showcase__img" decoding="async">
+                        <noscript><img src="img/cases/skorix/skorix-actual-test.webp" alt="Экран платформы Skorix: создание теста" class="showcase__img"></noscript>
+                    </div>
+                    <article class="showcase__panel">
+                        <p class="showcase__index"><span class="showcase__index-num index-num">01</span><span class="index-num">/03</span></p>
+                        <p class="showcase__eyebrow">Платформа для образования</p>
+                        <h3 class="showcase__name">Skorix</h3>
+                        <p class="showcase__desc">Создавать тесты, проводить проверку знаний и работать с результатами в одном пространстве.</p>
+                        <ul class="showcase__tags" aria-label="Роль и стек">
+                            <li class="showcase__tag">Веб-платформа</li>
+                            <li class="showcase__tag">Роли и доступ</li>
+                            <li class="showcase__tag">ИИ</li>
+                        </ul>
+                        <a href="cases/skorix.html" class="showcase__link">Смотреть кейс</a>
+                    </article>
+                </div>
 
-    <section class="hobbies" id="hobbies">
-        <h2 class="section__title section__title--hobbies">Мои увлечения</h2>
-        
-        <div class="hobbies__container">
-            <div class="hobbies__gallery">
-                <div class="hobbies__item">
-                    <img data-src="img/IMG_2.jpg" alt="Путешествия" class="hobbies__img" decoding="async">
-                    <h3 class="hobbies__label">Путешествия</h3>
+                <div class="showcase__case">
+                    <div class="showcase__frame showcase__frame--contain showcase__frame--light">
+                        <img data-src="img/cases/stylefinder/stylefinder-intro.webp" alt="Стартовый экран Stylefinder" class="showcase__img" decoding="async">
+                        <noscript><img src="img/cases/stylefinder/stylefinder-intro.webp" alt="Стартовый экран Stylefinder" class="showcase__img"></noscript>
+                    </div>
+                    <article class="showcase__panel">
+                        <p class="showcase__index"><span class="showcase__index-num index-num">02</span><span class="index-num">/03</span></p>
+                        <p class="showcase__eyebrow">Сервис планирования интерьера</p>
+                        <h3 class="showcase__name">Stylefinder</h3>
+                        <p class="showcase__desc">Продумать пространство комнаты и расстановку мебели до того, как начнутся реальные перемены.</p>
+                        <ul class="showcase__tags" aria-label="Роль и стек">
+                            <li class="showcase__tag">Интерактивный редактор</li>
+                            <li class="showcase__tag">Планировка</li>
+                            <li class="showcase__tag">UI/UX</li>
+                        </ul>
+                        <a href="cases/stylefinder.html" class="showcase__link">Смотреть кейс</a>
+                    </article>
                 </div>
-                <div class="hobbies__item">
-                    <img data-src="img/IMG_5.jpg" alt="Спортивное ориентирование" class="hobbies__img" decoding="async">
-                    <h3 class="hobbies__label">Спортивное ориентирование</h3>
+
+                <div class="showcase__case">
+                    <div class="showcase__frame">
+                        <img data-src="img/cases/loftzy/loftzy-sofa-warm-interior.webp" alt="Фотография мебели из каталога LOFTZY" class="showcase__img" decoding="async">
+                        <noscript><img src="img/cases/loftzy/loftzy-sofa-warm-interior.webp" alt="Фотография мебели из каталога LOFTZY" class="showcase__img"></noscript>
+                    </div>
+                    <article class="showcase__panel">
+                        <p class="showcase__index"><span class="showcase__index-num index-num">03</span><span class="index-num">/03</span></p>
+                        <p class="showcase__eyebrow">Сайт мебельной мастерской</p>
+                        <h3 class="showcase__name">LOFTZY</h3>
+                        <p class="showcase__desc">Сайт, который помогает рассмотреть мебель и обсудить свой заказ у мастерской.</p>
+                        <ul class="showcase__tags" aria-label="Роль и стек">
+                            <li class="showcase__tag">Каталог</li>
+                            <li class="showcase__tag">Адаптивная вёрстка</li>
+                            <li class="showcase__tag">Astro</li>
+                        </ul>
+                        <a href="cases/loftzy.html" class="showcase__link">Смотреть кейс</a>
+                    </article>
                 </div>
-                <div class="hobbies__item">
-                    <img data-src="img/IMG_3.jpg" alt="Велоспорт" class="hobbies__img" decoding="async">
-                    <h3 class="hobbies__label">Велоспорт</h3>
+
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section section--dark contact" id="contact">
+            <div class="contact__inner">
+                <p class="eyebrow eyebrow--on-dark contact__eyebrow">Есть идея или задача?</p>
+                <h2 class="contact__title">Давайте её обсудим</h2>
+                <div class="contact__links">
+                    <a href="https://t.me/sergey_kdsv" class="btn btn--primary btn-magnetic">Telegram</a>
+                    <a href="https://vk.ru/kudashevsergey" class="btn btn--ghost-dark">ВКонтакте</a>
+                    <a href="mailto:sergey.m.kudashev@gmail.com" class="btn btn--ghost-dark">Написать на почту</a>
                 </div>
             </div>
-            <div class="hobbies__controls">
-                <button class="hobbies__btn hobbies__btn--prev" aria-label="Предыдущая">↑</button>
-                <button class="hobbies__btn hobbies__btn--next" aria-label="Следующая">↓</button>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="my-work" id="work">
-        <h2 class="section__title section__title--work">Мои работы</h2>
-        <p class="section__subtitle section__subtitle--work">Лучшие проекты, над которыми я работал</p>
+    </main>
 
-        <div class="portfolio">
-            <!-- Portfolio 01 -->
-            <a href="https://chessrun.ru/" class="portfolio__item">
-                <img data-src="img/Chessrun-2.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-            <!-- Portfolio 02 -->
-            <a href="https://sergeik1970.github.io/CactusShop/" class="portfolio__item">
-                <img data-src="img/Cactus-shop.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-
-            <!-- Portfolio 03 -->
-            <a href="https://sergeik1970.github.io/SnakeGame/" class="portfolio__item">
-                <img data-src="img/SnakeGame.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-
-            <!-- Portfolio 04 -->
-            <a href="https://sergeik1970.github.io/Dragon-Repeller/" class="portfolio__item">
-                <img data-src="img/welcome-1.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-
-            <!-- Portfolio 05 -->
-            <a href="https://kdsv.app/" class="portfolio__item">
-                <img data-src="img/kdsv.app.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-
-            <!-- Portfolio 06 -->
-            <a href="https://sergeik1970.github.io/Couples/?" class="portfolio__item">
-                <img data-src="img/Pairs.jpg" alt="" class="portfolio__img" decoding="async">
-            </a>
-        </div>
-    </section>
-
-    <section class="footer" id="footer">
+    <footer class="footer" id="footer">
         <div class="footer__container">
             <div class="footer__content">
                 <div class="footer__section">
                     <h3 class="footer__title">KDSV</h3>
-                    <p class="footer__description">Front-end разработчик. Интерфейсы, код и пользовательский опыт.</p>
+                    <p class="footer__description">Команда дизайна и разработки. Сайты, сервисы и системы для бизнеса.</p>
                 </div>
 
                 <div class="footer__section">
@@ -189,9 +294,8 @@
                     <ul class="footer__nav">
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#services">Услуги</a></li>
-                        <li><a href="#about">Обо мне</a></li>
-                        <li><a href="#work">Работы</a></li>
-                        <li><a href="#footer">Контакты</a></li>
+                        <li><a href="#cases">Кейсы</a></li>
+                        <li><a href="#contact">Контакты</a></li>
                     </ul>
                 </div>
 
@@ -200,24 +304,25 @@
                     <a href="mailto:sergey.m.kudashev@gmail.com" class="footer__contact-link">sergey.m.kudashev@gmail.com</a>
                     <ul class="social-list">
                         <li class="social-list__item">
-                            <a class="social-list__link" href="https://github.com/sergeik1970" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        </li>
-                        <li class="social-list__item">
                             <a class="social-list__link" href="https://t.me/sergey_kdsv" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
                         </li>
                         <li class="social-list__item">
-                            <a class="social-list__link" href="https://discordapp.com/users/695582238104092752" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                            <a class="social-list__link" href="https://vk.ru/kudashevsergey" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer__bottom">
-                <p class="footer__copy">&copy; 2025 Сергей Кудашев. Все права защищены.</p>
+                <p class="footer__copy">&copy; 2026 KDSV. Все права защищены.</p>
+                <p class="footer__mark">kdsv.ru</p>
             </div>
         </div>
-    </section>
+    </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
     <script src="js/script.js"></script>
 
 </body>
