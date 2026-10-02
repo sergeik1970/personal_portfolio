@@ -1360,6 +1360,71 @@ h1, h2, h3, h4 {
     gap: clamp(3em, 6vw, 4.5em);
 }
 
+/* Key facts + numbers at the top of a case, above the numbered blocks */
+.case-summary {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2em, 4vw, 2.8em);
+}
+
+.case-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1.4em clamp(1.5rem, 3vw, 2.5rem);
+    margin: 0;
+}
+
+.case-facts dt {
+    font-family: var(--ff-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clr-blue-ink);
+    margin-bottom: 0.5em;
+}
+
+.case-facts dd {
+    margin: 0;
+    color: var(--clr-ink);
+    font-weight: var(--fw-med);
+    line-height: 1.5;
+}
+
+.case-facts a {
+    color: var(--clr-blue-ink);
+}
+
+.case-stats {
+    list-style: none;
+    margin: 0;
+    padding: clamp(1.8em, 4vw, 2.4em) 0 0;
+    border-top: 1px solid var(--clr-hairline-strong);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.6em clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.case-stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45em;
+}
+
+.case-stats__value {
+    font-family: var(--ff-display);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: var(--fw-bold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--clr-ink);
+}
+
+.case-stats__label {
+    color: var(--clr-ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
 .case-block {
     display: grid;
     grid-template-columns: 4.5rem 1fr;
