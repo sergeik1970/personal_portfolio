@@ -121,6 +121,13 @@ strong {
     padding: 0 var(--gutter);
 }
 
+/* .section already pads by --gutter; a container inside it doubled the
+   side margins (48px a side on phones) and pushed these blocks out of line
+   with the showcase, facts and founder rows. */
+.section > .container {
+    padding-inline: 0;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -737,7 +744,7 @@ h1, h2, h3, h4 {
 @media (max-width: 600px) {
     .hero {
         align-items: flex-end;
-        padding: calc(var(--gutter) + 4.5em) 1.25rem 3.2em;
+        padding: calc(var(--gutter) + 4.5em) var(--gutter) 3.2em;
     }
 
     .hero__title {
@@ -866,7 +873,8 @@ h1, h2, h3, h4 {
 
 @media (max-width: 700px) {
     .service-row {
-        grid-template-columns: 3rem 1fr;
+        grid-template-columns: 2.2rem 1fr;
+        gap: 0.9rem;
     }
     .service-row__icon { display: none; }
 }
@@ -1508,7 +1516,10 @@ h1, h2, h3, h4 {
 }
 
 .showcase__metric {
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 0.55em;
+    row-gap: 0.2em;
     margin: 0 0 1.3em;
     padding: 0.45em 0.85em;
     border-radius: 6px;
@@ -1517,6 +1528,14 @@ h1, h2, h3, h4 {
     font-size: 0.82rem;
     letter-spacing: 0.02em;
     color: var(--clr-blue-ink);
+}
+
+.showcase__metric > span:not(.showcase__metric-sep) {
+    white-space: nowrap;
+}
+
+.showcase__metric-sep {
+    opacity: 0.5;
 }
 
 .showcase__tags {
@@ -1547,6 +1566,7 @@ h1, h2, h3, h4 {
 .showcase__link {
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     gap: 0.4em;
     color: var(--clr-blue-ink);
     font-weight: var(--fw-sbold);
@@ -1738,7 +1758,7 @@ h1, h2, h3, h4 {
     display: inline-block;
     margin-bottom: 1.4em;
     border-bottom: 1px solid var(--clr-hairline-on-black);
-    padding-bottom: 0.2em;
+    padding: 0.7em 0 0.2em;
     transition: color 250ms ease, border-color 250ms ease;
 }
 
@@ -1949,6 +1969,9 @@ h1, h2, h3, h4 {
 
 .case-facts a {
     color: var(--clr-blue-ink);
+    display: inline-block;
+    padding-block: 0.6em;
+    margin-block: -0.6em;
 }
 
 .case-stats {
@@ -2278,4 +2301,27 @@ html.js [data-reveal].is-revealed {
 
 @keyframes vt-rise-in {
     from { opacity: 0; transform: translateY(48px); }
+}
+
+/* ==========================================================================
+   Phone polish
+   ========================================================================== */
+
+@media (max-width: 480px) {
+    .section__title {
+        font-size: 1.85rem;
+        line-height: 1.12;
+    }
+
+    .contact__links,
+    .case-cta__links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .timing__row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3em;
+    }
 }
