@@ -67,7 +67,36 @@
        ------------------------------------------------------------------- */
     var overlay = document.getElementById("pageTransition");
 
-    if (overlay) {
+    // Cross-document View Transitions (see the end of style.css) replace the
+    // overlay fade wherever the browser supports them.
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var nativePageTransitions = "CSSViewTransitionRule" in window && !reduceMotion;
+
+    if (nativePageTransitions) {
+        // The case-page hero carries view-transition-name "case-media". On the
+        // outgoing page, give that name to the image of the case being opened
+        // so it morphs into the new hero; clear it from an off-screen hero so
+        // it doesn't swoop in from above the viewport.
+        var lastLink = null;
+        document.addEventListener("click", function (e) {
+            lastLink = e.target.closest ? e.target.closest("a[href]") : null;
+        }, true);
+
+        window.addEventListener("pageswap", function (e) {
+            if (!e.viewTransition) return;
+            var ownHero = document.querySelector(".case-hero__visual");
+            if (ownHero) {
+                var r = ownHero.getBoundingClientRect();
+                if (r.bottom < 0 || r.top > window.innerHeight) ownHero.style.viewTransitionName = "none";
+            }
+            if (!lastLink || !/cases\//.test(lastLink.getAttribute("href") || "")) return;
+            var card = lastLink.closest(".showcase__case");
+            var media = card ? card.querySelector(".showcase__img") : lastLink.querySelector("img");
+            if (media && !ownHero) media.style.viewTransitionName = "case-media";
+        });
+    }
+
+    if (overlay && !nativePageTransitions) {
         var TRANSITION_MS = 420;
 
         // Fade the "arrival" cover out (only present if the previous page set it).
@@ -295,7 +324,8 @@
         if (chIndex) chTl.from(chIndex, { y: 16, opacity: 0, duration: 0.6 }, 0);
         if (chTitle.length) chTl.from(chTitle, { yPercent: 120, opacity: 0, duration: 0.85, stagger: 0.04 }, 0.1);
         chTl.from(chBits, { y: 18, opacity: 0, duration: 0.7, stagger: 0.08 }, 0.4);
-        if (chVisual) chTl.from(chVisual, { y: 40, opacity: 0, duration: 0.9 }, 0.35);
+        var arrivedByMorph = nativePageTransitions && document.referrer.indexOf(window.location.origin) === 0;
+        if (chVisual && !arrivedByMorph) chTl.from(chVisual, { y: 40, opacity: 0, duration: 0.9 }, 0.35);
 
         if (chVisual) {
             gsap.to(chVisual, {
@@ -315,6 +345,46 @@
                 batch.forEach(function (el) { el.classList.add("is-revealed"); });
             },
             once: true
+        });
+    }
+
+    /* ---- Facts: count up to the number already in the markup ---- */
+    document.querySelectorAll("[data-countup]").forEach(function (el) {
+        var target = parseInt(el.getAttribute("data-countup"), 10) || 0;
+        ScrollTrigger.create({
+            trigger: el,
+            start: "top 92%",
+            once: true,
+            onEnter: function () {
+                var obj = { v: 0 };
+                gsap.to(obj, {
+                    v: target,
+                    duration: target > 20 ? 1.6 : 1.1,
+                    ease: "power2.out",
+                    onUpdate: function () { el.textContent = Math.round(obj.v); }
+                });
+            }
+        });
+    });
+
+    /* ---- Process: the line fills with scroll and lights up each step ---- */
+    var stepsWrap = document.querySelector("[data-steps]");
+    if (stepsWrap) {
+        var stepItems = stepsWrap.querySelectorAll(".steps__item");
+        stepsWrap.classList.add("is-animated");
+        stepsWrap.style.setProperty("--progress", "0");
+        ScrollTrigger.create({
+            trigger: stepsWrap,
+            start: "top 75%",
+            end: "bottom 55%",
+            scrub: 0.6,
+            onUpdate: function (self) {
+                stepsWrap.style.setProperty("--progress", self.progress.toFixed(3));
+                stepItems.forEach(function (item, i) {
+                    var threshold = stepItems.length > 1 ? i / (stepItems.length - 1) : 0;
+                    item.classList.toggle("is-active", self.progress >= threshold * 0.97);
+                });
+            }
         });
     }
 
