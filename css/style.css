@@ -1337,6 +1337,16 @@ h1, h2, h3, h4 {
     object-position: top;
 }
 
+/* Wide screenshots (e.g. a full landing first screen) keep their own
+   proportions instead of being cover-cropped into the 4:3 box. */
+.case-hero__visual--natural {
+    aspect-ratio: auto;
+}
+
+.case-hero__visual--natural img {
+    height: auto;
+}
+
 /* .case-hero padding-bottom (8em) is intentionally smaller than the visual's
    -13em bottom margin, so the framed screenshot overhangs ~5em past the dark
    hero into the paper section below. .case-content's padding-top only needs

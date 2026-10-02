@@ -123,11 +123,14 @@
     var heroEl = document.querySelector(".hero, .case-hero");
 
     var pastHero = false;
+    var scrolled = false;
     var activeDarkEls = [];
 
     function updateHeaderTone() {
         if (!header) return;
-        var onDark = activeDarkEls.length > 0;
+        // Once the page moves, hero text starts sliding under the still
+        // transparent header — give it the dark fill while over the hero.
+        var onDark = activeDarkEls.length > 0 || (scrolled && !pastHero);
         header.classList.toggle("site-header--on-dark", onDark);
         header.classList.toggle("site-header--solid", pastHero && !onDark);
     }
@@ -140,6 +143,14 @@
             updateHeaderTone();
         }, { rootMargin: "0px 0px -88% 0px" });
         headerObserver.observe(heroEl);
+
+        window.addEventListener("scroll", function () {
+            var next = window.scrollY > 24;
+            if (next !== scrolled) {
+                scrolled = next;
+                updateHeaderTone();
+            }
+        }, { passive: true });
 
         // Secondary dark sections further down the page (contact block, case
         // CTA) need the header to switch to a dark-on-dark treatment instead
