@@ -1194,7 +1194,8 @@ h1, h2, h3, h4 {
     display: flex;
     align-items: center;
     gap: clamp(1.5rem, 4vw, 3rem);
-    padding: clamp(2em, 4vw, 2.8em) 0 clamp(2em, 4vw, 2.8em) var(--gutter);
+    /* Label starts on the same left edge as the container-wide blocks */
+    padding: clamp(2em, 4vw, 2.8em) 0 clamp(2em, 4vw, 2.8em) max(var(--gutter), calc((100vw - var(--container)) / 2));
     background: var(--clr-black);
     color: var(--clr-paper);
     overflow: hidden;
@@ -1255,10 +1256,24 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 700px) {
+    /* Full-bleed row on phones; the marquee must be exactly the screen
+       width, otherwise it stretches to its content and the right-hand fade
+       ends up off-screen. */
     .tech {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 1.2em;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .tech__label {
+        align-self: flex-start;
+        margin-left: var(--gutter);
+    }
+
+    .tech__marquee {
+        width: 100%;
     }
 }
 
@@ -1372,7 +1387,9 @@ h1, h2, h3, h4 {
    ========================================================================== */
 
 .founder {
-    max-width: var(--container);
+    /* Narrower than the container: the bio caps at 640px, so a full-width
+       grid left an empty band on the right. */
+    max-width: 980px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(200px, 320px) 1fr;
@@ -1430,10 +1447,12 @@ h1, h2, h3, h4 {
 @media (max-width: 760px) {
     .founder {
         grid-template-columns: 1fr;
-        text-align: left;
+        justify-items: center;
+        text-align: center;
     }
-    .founder__photo-wrap { justify-self: start; margin-bottom: 0.5em; }
+    .founder__photo-wrap { justify-self: center; margin-bottom: 0.5em; }
     .founder__img { max-width: 180px; }
+    .founder__bio { margin-inline: auto; }
 }
 
 /* ==========================================================================
@@ -1457,6 +1476,7 @@ h1, h2, h3, h4 {
 
 .showcase__frame {
     position: relative;
+    display: block;
     aspect-ratio: 4 / 3;
     border-radius: 10px;
     overflow: hidden;
@@ -1468,6 +1488,11 @@ h1, h2, h3, h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 600ms var(--ease-out);
+}
+
+a.showcase__frame:hover .showcase__img {
+    transform: scale(1.03);
 }
 
 /* For screenshots wider than the frame: show the whole screen instead of
@@ -1585,9 +1610,18 @@ h1, h2, h3, h4 {
     transform: translateX(5px);
 }
 
+/* Stacked (non-pinned) cases: a hairline and generous space between
+   projects, so each image clearly belongs to the text under it rather
+   than to the case above. */
+.showcase__stage:not(.is-pinned) .showcase__case + .showcase__case {
+    padding-top: clamp(3rem, 8vw, 4.5rem);
+    border-top: 1px solid var(--clr-hairline-strong);
+}
+
 @media (max-width: 760px) {
     .showcase__case {
         grid-template-columns: 1fr;
+        gap: 1.4rem;
     }
     .showcase__desc { max-width: none; }
 }
