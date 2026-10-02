@@ -667,6 +667,12 @@ h1, h2, h3, h4 {
     aspect-ratio: auto;
 }
 
+/* Touch screens have no hover lift, and a transform transition there would
+   restart on every scroll-driven --py update and make the cards stutter. */
+@media (hover: none) {
+    .hero__shot { transition: none; }
+}
+
 .hero__shot:hover,
 .hero__shot:focus-visible {
     z-index: 3;
@@ -2176,6 +2182,18 @@ html.js [data-reveal].is-revealed {
     opacity: 1;
     transform: none;
     transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+
+/* Phones: a shorter, softer rise — the fast-start desktop curve over 28px
+   read as a hop on a small screen. */
+@media (max-width: 900px) {
+    html.js [data-reveal] {
+        transform: translateY(16px);
+    }
+
+    html.js [data-reveal].is-revealed {
+        transition: opacity 900ms cubic-bezier(0.25, 0.8, 0.25, 1), transform 1000ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

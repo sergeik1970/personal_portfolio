@@ -222,6 +222,11 @@
     var ScrollTrigger = window.ScrollTrigger;
     gsap.registerPlugin(ScrollTrigger);
 
+    // Phones show/hide the address bar while scrolling, which resizes the
+    // viewport; re-measuring every time made scroll-linked elements jump.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    var isSmallScreen = window.matchMedia("(max-width: 900px)").matches;
+
     // Smooth inertia scrolling (skipped on touch by Lenis' own defaults).
     if (typeof window.Lenis !== "undefined") {
         // The CSS `scroll-behavior: smooth` on <html> (kept as the anchor-jump
@@ -286,14 +291,17 @@
         var shots = hero.querySelectorAll(".hero__shot");
         if (shots.length) {
             tl.from(shots, {
-                y: 70,
+                y: isSmallScreen ? 36 : 70,
                 opacity: 0,
-                duration: 1.1,
+                duration: isSmallScreen ? 1.4 : 1.1,
+                ease: isSmallScreen ? "power2.out" : "power3.out",
                 stagger: 0.12,
                 clearProps: "transform,opacity"
             }, 0.35);
 
-            var drift = [-30, -70, -120];
+            // Smaller travel on phones (the stack is small there) and a
+            // smoothed scrub so choppy touch scrolling doesn't step the cards.
+            var drift = isSmallScreen ? [-12, -28, -48] : [-30, -70, -120];
             shots.forEach(function (shot, i) {
                 gsap.to(shot, {
                     "--py": drift[i % drift.length] + "px",
@@ -302,7 +310,7 @@
                         trigger: hero,
                         start: "top top",
                         end: "bottom top",
-                        scrub: true
+                        scrub: 0.8
                     }
                 });
             });
@@ -331,7 +339,7 @@
             gsap.to(chVisual, {
                 yPercent: -4,
                 ease: "none",
-                scrollTrigger: { trigger: caseHero, start: "top top", end: "bottom top", scrub: true }
+                scrollTrigger: { trigger: caseHero, start: "top top", end: "bottom top", scrub: 0.8 }
             });
         }
     }
