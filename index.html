@@ -14,11 +14,11 @@
     <meta property="og:title" content="KDSV — сайты, сервисы и системы для бизнеса">
     <meta property="og:description" content="Команда дизайна и разработки. Проектируем и разрабатываем сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.">
     <meta property="og:url" content="https://kdsv.ru/">
-    <meta property="og:image" content="https://kdsv.ru/img/IMG_1.jpg">
+    <meta property="og:image" content="https://kdsv.ru/img/og-cover.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="KDSV — сайты, сервисы и системы для бизнеса">
     <meta name="twitter:description" content="Команда дизайна и разработки. Проектируем и разрабатываем сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.">
-    <meta name="twitter:image" content="https://kdsv.ru/img/IMG_1.jpg">
+    <meta name="twitter:image" content="https://kdsv.ru/img/og-cover.jpg">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -101,23 +101,40 @@
 
         <!-- Hero -->
         <section class="hero" id="home">
-            <div class="hero__bg">
-                <img src="img/IMG_1.jpg" class="hero__bg-img" alt="" decoding="async" fetchpriority="high">
-            </div>
-            <div class="hero__scrim"></div>
+            <div class="hero__glow" aria-hidden="true"></div>
             <div class="hero__grain" aria-hidden="true"></div>
 
-            <div class="hero__content">
-                <p class="eyebrow eyebrow--on-dark hero__eyebrow">Команда дизайна и разработки</p>
-                <h1 class="hero__title">
-                    <span class="line"><span class="word">От</span> <span class="word">задумки</span></span>
-                    <span class="line"><span class="word">до</span> <span class="word">запуска</span></span>
-                </h1>
-                <p class="hero__subtitle">KDSV — сайты, сервисы и системы для бизнеса</p>
-                <p class="hero__tagline">Помогаем пройти путь от идеи и проектирования до запуска и дальнейшего развития — сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.</p>
-                <div class="hero__actions" aria-label="Основные действия">
-                    <a href="https://t.me/sergey_kdsv" class="btn btn--primary">Обсудить проект</a>
-                    <a href="#cases" class="btn btn--ghost-dark">Смотреть кейсы</a>
+            <div class="hero__layout">
+                <div class="hero__content">
+                    <p class="eyebrow eyebrow--on-dark hero__eyebrow">Команда дизайна и разработки</p>
+                    <h1 class="hero__title">
+                        <span class="line"><span class="word">От</span> <span class="word">задумки</span></span>
+                        <span class="line"><span class="word">до</span> <span class="word">запуска</span></span>
+                    </h1>
+                    <p class="hero__subtitle">KDSV — сайты, сервисы и системы для бизнеса</p>
+                    <p class="hero__tagline">Помогаем пройти путь от идеи и проектирования до запуска и дальнейшего развития — сайты компаний, интернет-магазины, веб-сервисы и внутренние системы.</p>
+                    <div class="hero__actions" aria-label="Основные действия">
+                        <a href="https://t.me/sergey_kdsv" class="btn btn--primary">Обсудить проект</a>
+                        <a href="#cases" class="btn btn--ghost-dark">Смотреть кейсы</a>
+                    </div>
+                </div>
+
+                <div class="hero__stack" aria-label="Наши проекты">
+                    <a href="cases/loftzy.html" class="hero__shot hero__shot--back">
+                        <span class="hero__shot-bar" aria-hidden="true"></span>
+                        <img src="img/cases/loftzy/loftzy-curved-sofa.webp" alt="" width="1280" height="960" decoding="async">
+                        <span class="hero__shot-label">LOFTZY</span>
+                    </a>
+                    <a href="cases/stylefinder.html" class="hero__shot hero__shot--mid">
+                        <span class="hero__shot-bar" aria-hidden="true"></span>
+                        <img src="img/cases/stylefinder/stylefinder-result.webp" alt="" width="1600" height="1179" decoding="async">
+                        <span class="hero__shot-label">Stylefinder</span>
+                    </a>
+                    <a href="cases/skorix.html" class="hero__shot hero__shot--front">
+                        <span class="hero__shot-bar" aria-hidden="true"></span>
+                        <img src="img/cases/skorix/skorix-landing-hero.webp" alt="" width="1800" height="1094" decoding="async" fetchpriority="high">
+                        <span class="hero__shot-label">Skorix</span>
+                    </a>
                 </div>
             </div>
         </section>

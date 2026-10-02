@@ -250,18 +250,32 @@
         }
         tl.from(heroBits, { y: 22, opacity: 0, duration: 0.8, stagger: 0.08 }, 0.5);
 
-        var heroBg = hero.querySelector(".hero__bg-img");
-        if (heroBg) {
-            gsap.to(heroBg, {
-                yPercent: 8,
-                scale: 1.16,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: hero,
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true
-                }
+        // Project stack: cards rise in one after another, then drift at
+        // different speeds while the hero scrolls away. Parallax goes through
+        // the --py custom property so the CSS tilt and hover transforms keep
+        // working (an inline GSAP transform would override them).
+        var shots = hero.querySelectorAll(".hero__shot");
+        if (shots.length) {
+            tl.from(shots, {
+                y: 70,
+                opacity: 0,
+                duration: 1.1,
+                stagger: 0.12,
+                clearProps: "transform,opacity"
+            }, 0.35);
+
+            var drift = [-30, -70, -120];
+            shots.forEach(function (shot, i) {
+                gsap.to(shot, {
+                    "--py": drift[i % drift.length] + "px",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: hero,
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
             });
         }
     }

@@ -535,38 +535,23 @@ h1, h2, h3, h4 {
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     background: var(--clr-black);
     color: var(--clr-paper);
     overflow: hidden;
-    padding: calc(var(--gutter) + 3.5em) var(--gutter) 4.5em;
+    padding: calc(var(--gutter) + 4.5em) var(--gutter) 4.5em;
 }
 
-.hero__bg {
+/* Brand-blue light behind the project stack, with a faint warm counter-glow
+   bottom-left so the black doesn't read as flat. */
+.hero__glow {
     position: absolute;
     inset: 0;
     z-index: 0;
-    overflow: hidden;
-}
-
-.hero__bg-img {
-    width: 100%;
-    height: 130%;
-    object-fit: cover;
-    object-position: 62% 30%;
-    transform: scale(1.02);
-    will-change: transform;
-}
-
-.hero__scrim {
-    position: absolute;
-    inset: 0;
-    /* Darkened at the 38%/68%/100% stops (vs. the original 0.32/0.55/0.96)
-       so the tagline clears AA contrast against the photo's lime-jacket
-       region at every width, not just the narrow mobile crop. */
     background:
-        linear-gradient(180deg, rgba(14, 12, 9, 0.75) 0%, rgba(14, 12, 9, 0.42) 38%, rgba(14, 12, 9, 0.72) 68%, rgba(14, 12, 9, 0.97) 100%),
-        linear-gradient(90deg, rgba(14, 12, 9, 0.55) 0%, rgba(14, 12, 9, 0.05) 55%, rgba(14, 12, 9, 0.35) 100%);
+        radial-gradient(48% 60% at 74% 46%, rgba(var(--clr-blue-rgb), 0.32) 0%, rgba(var(--clr-blue-rgb), 0.08) 55%, rgba(var(--clr-blue-rgb), 0) 100%),
+        radial-gradient(40% 45% at 8% 100%, rgba(245, 240, 232, 0.06) 0%, rgba(245, 240, 232, 0) 100%);
+    pointer-events: none;
 }
 
 .hero__grain {
@@ -577,41 +562,127 @@ h1, h2, h3, h4 {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.hero__content {
+.hero__layout {
     position: relative;
     z-index: 2;
-    max-width: 880px;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
 }
 
-/* Localised scrim behind the whole content column, not just one label.
-   Rounds 2 and 3 each fixed a single line of type (tagline, then eyebrow)
-   against this same photo — the recurring cause is that the hero's lime-
-   jacket region is bright enough to defeat *any* small light-on-dark text
-   placed over it. Darkening the backdrop under the whole column closes the
-   defect class instead of the individual instance. Sits behind the text
-   (z-index below the column's own children) and above the photo/scrim/grain. */
-.hero__content::before {
-    content: "";
+.hero__content {
+    position: relative;
+    max-width: 640px;
+}
+
+/* ---- Project stack: three real screens fanned out, each links to its case */
+.hero__stack {
+    position: relative;
+    aspect-ratio: 1 / 0.92;
+}
+
+.hero__shot {
     position: absolute;
-    z-index: -1;
-    inset: -4em -6em -4em -8em;
-    /* Radial falloff reaches 0 alpha before the box edge, so there is no
-       hard rectangle visible against the photo at any width — it reads as
-       a soft vignette behind the type, not a card. */
-    background: radial-gradient(60% 78% at 32% 46%, rgba(14, 12, 9, 0.5) 0%, rgba(14, 12, 9, 0.32) 42%, rgba(14, 12, 9, 0.12) 70%, rgba(14, 12, 9, 0) 100%);
-    pointer-events: none;
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #15130f;
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 6px 18px rgba(0, 0, 0, 0.35);
+    color: var(--clr-paper);
+    text-decoration: none;
+    transform: translateY(var(--py, 0px)) rotate(var(--tilt, 0deg));
+    transition: transform 450ms var(--ease-out), box-shadow 450ms var(--ease-out);
 }
 
-.hero__eyebrow {
-    /* Same treatment as the tagline fix below: a near-paper colour at high
-       alpha clears AA over the darkened backdrop at every width, where the
-       inherited --clr-blue-bright (safe on flat near-black, unsafe over a
-       photo) did not. */
-    color: rgba(245, 240, 232, 0.92);
+.hero__shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Fake browser chrome: three dots on a dark strip */
+.hero__shot-bar {
+    display: block;
+    height: 22px;
+    background:
+        radial-gradient(circle at 14px 50%, #e5655b 3.5px, transparent 4px),
+        radial-gradient(circle at 27px 50%, #e8b04b 3.5px, transparent 4px),
+        radial-gradient(circle at 40px 50%, #5fbf7a 3.5px, transparent 4px),
+        #1d1a15;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+}
+
+/* Top-right, just under the bar: the one corner no other card overlaps */
+.hero__shot-label {
+    position: absolute;
+    top: calc(22px + 0.6rem);
+    right: 0.6rem;
+    padding: 0.3em 0.75em;
+    border-radius: 999px;
+    background: rgba(14, 12, 9, 0.72);
+    backdrop-filter: blur(6px);
+    font-family: var(--ff-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+}
+
+.hero__shot--back {
+    --tilt: 5deg;
+    top: 0;
+    right: 0;
+    width: 50%;
+}
+
+.hero__shot--back img {
+    aspect-ratio: 4 / 3;
+    object-position: 50% 60%;
+}
+
+.hero__shot--mid {
+    --tilt: -4deg;
+    top: 12%;
+    left: 0;
+    width: 62%;
+}
+
+.hero__shot--front {
+    --tilt: 1.5deg;
+    bottom: 0;
+    left: 18%;
+    width: 70%;
+    z-index: 2;
+}
+
+.hero__shot:hover,
+.hero__shot:focus-visible {
+    z-index: 3;
+    transform: translateY(calc(var(--py, 0px) - 6px)) rotate(0deg) scale(1.02);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(var(--clr-blue-rgb), 0.6);
+}
+
+@media (max-width: 900px) {
+    .hero__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__stack {
+        order: -1;
+        width: min(100%, 520px);
+        aspect-ratio: 1 / 0.66;
+        margin-bottom: 0.5em;
+    }
 }
 
 .hero__title {
-    font-size: clamp(2.9rem, 9.5vw, 7rem);
+    font-size: clamp(2.9rem, 6.4vw, 5.8rem);
     font-weight: var(--fw-xbold);
     letter-spacing: -0.02em;
     margin: 0 0 0.5em;
@@ -641,11 +712,6 @@ h1, h2, h3, h4 {
     max-width: 620px;
     font-size: clamp(1.02rem, 1.6vw, 1.18rem);
     line-height: 1.7;
-    /* Raised from --clr-paper-on-black-faint (0.56 alpha) to 0.78 at all
-       widths — round 2 found the lower alpha failing AA (min 3.26:1 at
-       768px, 3.33:1 at 1440px) wherever the photo's lime jacket sits behind
-       the text. This, combined with the darkened .hero__scrim above, was
-       already verified at 0.78/≤600px to clear a 5.17:1 minimum. */
     color: rgba(245, 240, 232, 0.78);
     margin: 0 0 2.2em;
 }
@@ -659,11 +725,7 @@ h1, h2, h3, h4 {
 @media (max-width: 600px) {
     .hero {
         align-items: flex-end;
-        padding: calc(var(--gutter) + 3em) 1.25rem 3.2em;
-    }
-
-    .hero__bg-img {
-        object-position: 68% 30%;
+        padding: calc(var(--gutter) + 4.5em) 1.25rem 3.2em;
     }
 
     .hero__title {
