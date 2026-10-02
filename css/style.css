@@ -1044,6 +1044,52 @@ h1, h2, h3, h4 {
     position: relative;
 }
 
+/* Glowing dot riding the end of the fill */
+.steps__head {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: calc(var(--progress, 1) * 100%);
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: var(--clr-blue);
+    box-shadow: 0 0 0 5px rgba(var(--clr-blue-rgb), 0.18), 0 0 18px 2px rgba(var(--clr-blue-rgb), 0.55);
+}
+
+.steps-wrap.is-animated .steps__head {
+    display: block;
+}
+
+/* Steps the line hasn't reached yet sit dimmed and slightly lower */
+.steps-wrap.is-animated .steps__title,
+.steps-wrap.is-animated .steps__text {
+    opacity: 0.35;
+    transform: translateY(10px);
+    transition: opacity 500ms ease, transform 600ms var(--ease-out);
+}
+
+.steps-wrap.is-animated .steps__text {
+    transition-delay: 80ms;
+}
+
+.steps-wrap.is-animated .steps__item.is-active .steps__title,
+.steps-wrap.is-animated .steps__item.is-active .steps__text {
+    opacity: 1;
+    transform: none;
+}
+
+.steps-wrap.is-animated .steps__item.is-active .steps__num {
+    animation: step-pop 520ms var(--ease-out);
+}
+
+@keyframes step-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.18); box-shadow: 0 0 0 12px rgba(var(--clr-blue-rgb), 0.18); }
+    100% { transform: scale(1); }
+}
+
 .steps__num {
     position: relative;
     z-index: 1;
@@ -1100,6 +1146,11 @@ h1, h2, h3, h4 {
     .steps__fill {
         transform: scaleY(var(--progress, 1));
         transform-origin: top;
+    }
+
+    .steps__head {
+        top: calc(var(--progress, 1) * 100%);
+        left: 50%;
     }
 
     .steps__item {

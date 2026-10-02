@@ -375,8 +375,12 @@
         stepsWrap.style.setProperty("--progress", "0");
         ScrollTrigger.create({
             trigger: stepsWrap,
-            start: "top 75%",
-            end: "bottom 55%",
+            start: "top 80%",
+            // The horizontal (desktop) row is short, so give it a longer
+            // scroll distance to fill over; the vertical mobile list is tall
+            // enough to track its own height.
+            end: function () { return window.innerWidth > 900 ? "top 25%" : "bottom 55%"; },
+            invalidateOnRefresh: true,
             scrub: 0.6,
             onUpdate: function (self) {
                 stepsWrap.style.setProperty("--progress", self.progress.toFixed(3));
@@ -463,4 +467,11 @@
             }
         });
     }
+
+    // The showcase pin above is created last but adds ~2 viewports of
+    // pin-spacer to the middle of the page. Triggers created earlier for
+    // content below it (process line, reveals) were measured without that
+    // height and fired far too early; re-sort into page order and re-measure.
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
 })();
