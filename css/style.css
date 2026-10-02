@@ -2063,6 +2063,11 @@ h1, h2, h3, h4 {
     border-top: 1px solid var(--clr-hairline);
 }
 
+/* A wide screenshot can span both columns above the pair below it */
+.case-gallery__wide {
+    column-span: all;
+}
+
 @media (max-width: 620px) {
     .case-gallery__grid { columns: 1; }
 }
