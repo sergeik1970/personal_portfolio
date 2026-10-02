@@ -1103,7 +1103,7 @@ h1, h2, h3, h4 {
     background: var(--clr-paper);
     font-size: 0.85rem;
     color: var(--clr-ink);
-    transition: background-color 400ms ease, border-color 400ms ease, color 400ms ease, box-shadow 400ms ease;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
 }
 
 /* Without the scroll animation every step is simply "done" */

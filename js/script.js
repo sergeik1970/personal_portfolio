@@ -371,8 +371,32 @@
     var stepsWrap = document.querySelector("[data-steps]");
     if (stepsWrap) {
         var stepItems = stepsWrap.querySelectorAll(".steps__item");
+        var stepsTrack = stepsWrap.querySelector(".steps__track");
+        var stepEdges = [];
         stepsWrap.classList.add("is-animated");
         stepsWrap.style.setProperty("--progress", "0");
+
+        // Where along the line (0–1) the fill first touches each number
+        // circle: its left edge on the horizontal desktop row, its top edge
+        // on the vertical mobile list. Circles sit at the start of each
+        // column, not at even quarters, so even spacing lit them late.
+        function measureStepEdges() {
+            var t = stepsTrack.getBoundingClientRect();
+            var vertical = t.height > t.width;
+            stepEdges = Array.prototype.map.call(stepItems, function (item) {
+                var n = item.querySelector(".steps__num").getBoundingClientRect();
+                return vertical ? (n.top - t.top) / t.height : (n.left - t.left) / t.width;
+            });
+        }
+
+        function paintSteps(progress) {
+            stepsWrap.style.setProperty("--progress", progress.toFixed(4));
+            stepItems.forEach(function (item, i) {
+                item.classList.toggle("is-active", progress > Math.max(stepEdges[i], 0));
+            });
+        }
+
+        measureStepEdges();
         ScrollTrigger.create({
             trigger: stepsWrap,
             start: "top 80%",
@@ -381,13 +405,12 @@
             // enough to track its own height.
             end: function () { return window.innerWidth > 900 ? "top 25%" : "bottom 55%"; },
             invalidateOnRefresh: true,
-            scrub: 0.6,
+            onRefresh: function (self) {
+                measureStepEdges();
+                paintSteps(self.progress);
+            },
             onUpdate: function (self) {
-                stepsWrap.style.setProperty("--progress", self.progress.toFixed(3));
-                stepItems.forEach(function (item, i) {
-                    var threshold = stepItems.length > 1 ? i / (stepItems.length - 1) : 0;
-                    item.classList.toggle("is-active", self.progress >= threshold * 0.97);
-                });
+                paintSteps(self.progress);
             }
         });
     }
