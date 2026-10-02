@@ -661,6 +661,12 @@ h1, h2, h3, h4 {
     z-index: 2;
 }
 
+/* The Skorix landing shot is wider than 16:10; show it whole so the
+   headline keeps its own left margin instead of being cropped to the edge. */
+.hero__shot--front img {
+    aspect-ratio: auto;
+}
+
 .hero__shot:hover,
 .hero__shot:focus-visible {
     z-index: 3;
