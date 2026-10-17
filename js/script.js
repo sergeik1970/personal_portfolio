@@ -323,6 +323,7 @@
         var chIndex = caseHero.querySelector(".case-hero__index");
         var chTitle = caseHero.querySelectorAll(".case-hero__title .word");
         var chBits = [
+            caseHero.querySelector(".case-hero__byline"),
             caseHero.querySelector(".case-hero__description"),
             caseHero.querySelector(".case-hero__tags")
         ].filter(Boolean);
